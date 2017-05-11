@@ -1,9 +1,9 @@
 #include <stdio.h>
 
 /**
- * main - print quote to stderr
+ * main - write quote to stderr using fwrite
  *
- * Return: 1 to indicate output to stderr
+ * Return: 1 always
  */
 int main(void)
 {
