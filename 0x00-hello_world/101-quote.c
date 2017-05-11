@@ -1,4 +1,6 @@
-#include <stdlib.h>
+#include <unistd.h>
+
+#define quote "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n"
 
 /**
  * main - use system call to output quote to stderr
@@ -7,6 +9,6 @@
  */
 int main(void)
 {
-	system("echo \"and that piece of art is useful\\\" - Dora Korpar, 2015-10-19\" >&2");
+	write(STDERR_FILENO, quote, sizeof(quote) - 1);
 	return (1);
 }
