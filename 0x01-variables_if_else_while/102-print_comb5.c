@@ -14,10 +14,10 @@ int main(void)
 	{
 		while (b <= 99)
 		{
-			putchar('0' + (a - a % 10) / 10);
+			putchar('0' + a / 10);
 			putchar('0' + a % 10);
 			putchar(' ');
-			putchar('0' + (b - b % 10) / 10);
+			putchar('0' + b / 10);
 			putchar('0' + b % 10);
 			if (b != 99 || a != 98)
 			{
