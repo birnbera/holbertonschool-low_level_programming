@@ -21,7 +21,7 @@ int main(void)
 	else
 		printf("%lu", n1b);
 
-	for (count = 1; count <= FIB_MAX; count++)
+	for (count = 1; count < FIB_MAX; count++)
 	{
 		printf(", ");
 		if (n2a)
