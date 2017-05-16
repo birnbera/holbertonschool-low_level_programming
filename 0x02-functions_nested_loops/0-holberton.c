@@ -1,5 +1,10 @@
 #include "holberton.h"
 
+/**
+ * main - print "Holberton" followed by newline with _putchar
+ *
+ * Return: 0 always
+ */
 int main(void)
 {
 	char hbtn[] = "Holberton\n";
