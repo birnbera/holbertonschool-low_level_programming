@@ -2,8 +2,6 @@
 #define FIB_MAX 98
 #define MAXVAL 100000000000
 
-void print_in_parts(unsigned long int, unsigned long int);
-
 /**
  * main - print first 98 fibonacci numbers
  *
@@ -18,11 +16,18 @@ int main(void)
 	n1b = 1;
 	n2b = 2;
 
-	print_in_parts(n1a, n1b);
-	for (count = 1; count < FIB_MAX; count++)
+	if (n1a)
+		printf("%lu%lu", n1a, n1b);
+	else
+		printf("%lu", n1b);
+
+	for (count = 1; count <= FIB_MAX; count++)
 	{
 		printf(", ");
-		print_in_parts(n2a, n2b);
+		if (n2a)
+			printf("%lu%lu", n2a, n2b);
+		else
+			printf("%lu", n2b);
 		tmpa = n1a;
 		tmpb = n1b;
 		n1a = n2a;
@@ -34,12 +39,4 @@ int main(void)
 	}
 	printf("\n");
 	return (0);
-}
-
-void print_in_parts(unsigned long int a, unsigned long int b)
-{
-	if (a)
-		printf("%lu%lu", a, b);
-	else
-		printf("%lu", b);
 }
