@@ -12,7 +12,7 @@ int main(void)
 	unsigned long int tmp, count;
 
 	printf("%lu", n1);
-	for (count = 1; count <= 50; count++)
+	for (count = 1; count < 49; count++)
 	{
 		printf(", %lu", n2);
 		tmp = n1;
