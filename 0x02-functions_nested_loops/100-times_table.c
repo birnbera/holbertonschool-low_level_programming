@@ -20,18 +20,17 @@ void print_times_table(int n)
 			{
 				r = i * j;
 				_putchar(' ');
-				k = 1000;
-				while (!(r % k / (k / 10)) && k >= 100)
+				k = 100;
+				while (!(r / k % 10) && k >= 10)
 				{
 					_putchar(' ');
 					k /= 10;
 				}
-				while (k >= 100)
+				while (k >= 1)
 				{
-					_putchar(r % k / (k / 10) + '0');
+					_putchar(r / k % 10 + '0');
 					k /= 10;
 				}
-				_putchar(r % k + '0');
 				if (j < n)
 					_putchar(',');
 			}
