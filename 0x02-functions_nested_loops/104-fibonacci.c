@@ -17,7 +17,7 @@ int main(void)
 	n2b = 2;
 
 	if (n1a)
-		printf("%lu%lu", n1a, n1b);
+		printf("%lu%0*lu", n1a, 11, n1b);
 	else
 		printf("%lu", n1b);
 
@@ -25,7 +25,7 @@ int main(void)
 	{
 		printf(", ");
 		if (n2a)
-			printf("%lu%lu", n2a, n2b);
+			printf("%lu%0*lu", n2a, 11, n2b);
 		else
 			printf("%lu", n2b);
 		tmpa = n1a;
