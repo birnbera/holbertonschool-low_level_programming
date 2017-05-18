@@ -7,6 +7,7 @@
 void print_number(int n)
 {
 	int m = (n < 0 ? -1 : 1);
+
 	if (n * m < 10)
 	{
 		if (m == -1)
