@@ -8,7 +8,7 @@ void print_number(int n)
 {
 	int m = (n < 0 ? -1 : 1);
 
-	if (n / 10 * m == 0)
+	if (n / 10 == 0)
 	{
 		if (m == -1)
 			_putchar('-');
