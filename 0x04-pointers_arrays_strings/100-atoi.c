@@ -7,7 +7,7 @@
 int _atoi(char *s)
 {
 	char c;
-	int i = 0, sign = 0;
+	int i = 0, sign = 0, tmp;
 
 	while ((c = *s) > '\0' && (c < '0' || c > '9'))
 	{
@@ -19,10 +19,11 @@ int _atoi(char *s)
 	}
 	while (c >= '0' && c <= '9')
 	{
-		if (i * 10 > i)
-			break;
+		tmp = i;
 		i *= 10;
 		i -= (c - '0');
+		if (i > tmp)
+			return (0);
 		c = *(++s);
 	}
 	return (i * (sign < 0 ? 1 : -1));
