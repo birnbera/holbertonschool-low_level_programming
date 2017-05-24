@@ -17,14 +17,15 @@ int _atoi(char *s)
 			++sign;
 		++s;
 	}
+	sign = (sign < 0 ? 1 : -1);
 	while (c >= '0' && c <= '9')
 	{
 		tmp = i;
 		i *= 10;
 		i -= (c - '0');
 		if (i > tmp)
-			return (0);
+			return (tmp * sign);
 		c = *(++s);
 	}
-	return (i * (sign < 0 ? 1 : -1));
+	return (i * sign);
 }
