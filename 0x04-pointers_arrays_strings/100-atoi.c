@@ -1,3 +1,4 @@
+#include <stdio.h>
 /**
  * _atoi - Convert string 's' to integer
  * @s: String to convert to int, potentially with preceding characters
@@ -7,9 +8,9 @@
 int _atoi(char *s)
 {
 	char c;
-	int plus = 0, minus = 0, sign = 1, i = 0;
+	int plus = 0, minus = 0, i = 0, sign;
 
-	while ((c = *s) < '0' || c > '9')
+	while ((c = *s) > '\0' && (c < '0' || c > '9'))
 	{
 		if (c == '-')
 			++minus;
@@ -18,7 +19,7 @@ int _atoi(char *s)
 		++s;
 	}
 	sign = (plus >= minus ? 1 : -1);
-       	while (c >= '0' && c <= '9')
+	while (c >= '0' && c <= '9')
 	{
 		i *= 10;
 		i += (c - '0');
