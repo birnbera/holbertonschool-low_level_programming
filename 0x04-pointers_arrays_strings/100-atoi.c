@@ -1,4 +1,3 @@
-#include <stdio.h>
 /**
  * _atoi - Convert string 's' to integer
  * @s: String to convert to int, potentially with preceding characters
