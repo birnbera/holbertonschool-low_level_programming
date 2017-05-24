@@ -19,7 +19,7 @@ int _atoi(char *s)
 	}
 	while (c >= '0' && c <= '9')
 	{
-		if (i * 10 - 10 > i)
+		if (i * 10 > i)
 			break;
 		i *= 10;
 		i -= (c - '0');
