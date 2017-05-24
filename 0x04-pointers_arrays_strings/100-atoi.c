@@ -7,25 +7,22 @@
 int _atoi(char *s)
 {
 	char c;
-	int i = 0, sign = 0, tmp;
+	int i = 0, sign = 1, tmp;
 
 	while ((c = *s) > '\0' && (c < '0' || c > '9'))
 	{
 		if (c == '-')
-			--sign;
-		else if (c == '+')
-			++sign;
+			sign *= -1;
 		++s;
 	}
-	sign = (sign < 0 ? 1 : -1);
 	while (c >= '0' && c <= '9')
 	{
 		tmp = i;
 		i *= 10;
 		i -= (c - '0');
 		if (i > tmp)
-			return (tmp * sign);
+			return (tmp * -sign);
 		c = *(++s);
 	}
-	return (i * sign);
+	return (i * -sign);
 }
