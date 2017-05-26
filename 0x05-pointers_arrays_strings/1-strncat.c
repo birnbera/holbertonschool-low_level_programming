@@ -2,6 +2,7 @@
  * _strncat - copy at most `n' bytes from `src' to `dest'
  * @dest: destination string
  * @src: source string
+ * @n: number of bytes
  *
  * Return: pointer to destination string
  */
