@@ -2,6 +2,7 @@
  * _strncpy - copy at most n characters from `src' into `dest'
  * @dest: destination string
  * @src: source string
+ * @n: number of characters
  *
  * Return: pointer to dest
  */
