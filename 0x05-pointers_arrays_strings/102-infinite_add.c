@@ -16,6 +16,7 @@ int get_hi(char *s)
 /**
  * rev_str - reverse string `s' in place
  * @s: string to reverse
+ * @hi: highest index (below '\0') in `s'
  */
 void rev_str(char *s, int hi)
 {
