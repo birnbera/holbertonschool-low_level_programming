@@ -35,8 +35,6 @@ void print_buffer(char *b, int size)
 					putchar((c >= ' ' && c <= '~' ?
 						 c : '.'));
 				}
-				else
-					putchar(' ');
 			}
 			putchar('\n');
 		}
