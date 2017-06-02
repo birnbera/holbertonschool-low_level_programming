@@ -1,6 +1,7 @@
 /**
  * _sqrt_inner - recursively compute square root of perfect square
  * @n: number to get root of
+ * @i: guess
  *
  * Return: sqrt(n) if n is a perfect square, or the root of square below `n'
  */
