@@ -4,16 +4,11 @@
  *
  * Return: sqrt(n) if n is a perfect square, or the root of square below `n'
  */
-int _sqrt_inner(int n)
+int _sqrt_inner(int n, int i)
 {
-	int m;
-
-	if (n == 1)
-		return (1);
-	m = _sqrt_inner(n - 1);
-	if (n % m)
-		return (m);
-	return (n / m);
+	if (i * i > n)
+		return (i - 1);
+	return (_sqrt_inner(n, i + 1));
 }
 
 /**
@@ -30,11 +25,8 @@ int _sqrt_recursion(int n)
 		return (-1);
 	if (n == 0)
 		return (0);
-
-	m = _sqrt_inner(n);
-
+	m = _sqrt_inner(n, 1);
 	if (m * m == n)
 		return (m);
-	else
-		return (-1);
+	return (-1);
 }
