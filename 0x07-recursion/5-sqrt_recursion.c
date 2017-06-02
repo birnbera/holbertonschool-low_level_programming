@@ -13,7 +13,7 @@ int _sqrt_inner(int n)
 	m = _sqrt_inner(n - 1);
 	if (n % m)
 		return (m);
-       	return (n / m);
+	return (n / m);
 }
 
 /**
