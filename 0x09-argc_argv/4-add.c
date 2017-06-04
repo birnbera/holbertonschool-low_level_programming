@@ -15,13 +15,13 @@ int main(int argc, char **argv)
 
 	if (argc == 1)
 	{
-		puts("Error");
+		puts("0");
 		return (1);
 	}
 	while (--argc)
 	{
 		++argv;
-		for (i = 0; (c = *(*argv + i)) != '\0'; ++i)
+		for (i = 0; (c = *(*argv + i)); ++i)
 		{
 			if (!(isdigit(c)))
 			{
