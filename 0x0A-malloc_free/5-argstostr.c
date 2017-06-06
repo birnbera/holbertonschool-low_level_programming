@@ -9,9 +9,11 @@
  */
 char *argstostr(int ac, char **av)
 {
+	int i, j, k, totalbytes = 0;
+	char *p;
+
 	if (ac == 0 || av == NULL)
 		return (NULL);
-	int i, j, k, totalbytes = 0;
 
 	for (i = 0; i < ac; ++i)
 	{
@@ -22,7 +24,7 @@ char *argstostr(int ac, char **av)
 	}
 	++totalbytes; /* space for string terminator */
 
-	char *p = malloc(totalbytes * sizeof(char));
+	p = (char *) malloc(totalbytes * sizeof(char));
 
 	if (p == NULL)
 		return (NULL);
