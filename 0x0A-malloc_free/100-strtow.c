@@ -1,6 +1,27 @@
 #include <stdlib.h>
 
 /**
+ * get_nwords - get the number of space separated words in `s'
+ * @s: string to search
+ *
+ * Return: number of words in `s'
+ */
+int get_nwords(char *s)
+{
+	int i = 0, nwords = 0;
+
+	while (s[i])
+	{
+		while (s[i] && s[i] == ' ')
+			++i;
+		while (s[i] && s[i] != ' ')
+			++i;
+		++nwords;
+	}
+	return (nwords);
+}
+
+/**
  * strtow - split `str' into array of words using spaces to delimit words
  * @str: string of space-separated words
  *
@@ -13,15 +34,7 @@ char **strtow(char *str)
 
 	if (str == NULL || *str == '\0')
 		return (NULL);
-	i = nwords = 0;
-	while (str[i])
-	{
-		while (str[i] && str[i] == ' ')
-			++i;
-		while (str[i] && str[i] != ' ')
-			++i;
-		++nwords;
-	}
+	nwords = get_nwords(str);
 	p = (char **) malloc(nwords * sizeof(char *));
 	if (p == NULL)
 		return (NULL);
