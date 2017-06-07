@@ -55,6 +55,7 @@ char **strtow(char *str)
 			while (j)
 				free(p[--j]);
 			free(p);
+			return (NULL);
 		}
 		for (k = 0; k < (end - begin); ++k)
 			p[j][k] = str[begin + k];
