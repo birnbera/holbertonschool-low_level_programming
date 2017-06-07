@@ -8,7 +8,7 @@
  */
 int get_nwords(char *s)
 {
-	int i = 0, nwords = 0;
+	int i = 0, nwords = 1;
 
 	while (s[i])
 	{
