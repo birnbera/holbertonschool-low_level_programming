@@ -8,12 +8,14 @@
  */
 int get_nwords(char *s)
 {
-	int i = 0, nwords = 1;
+	int i = 0, nwords = 0;
 
 	while (s[i])
 	{
 		while (s[i] && s[i] == ' ')
 			++i;
+		if (s[i] == '\0')
+			break;
 		while (s[i] && s[i] != ' ')
 			++i;
 		++nwords;
@@ -35,6 +37,9 @@ char **strtow(char *str)
 	if (str == NULL || *str == '\0')
 		return (NULL);
 	nwords = get_nwords(str);
+	if (nwords == 0)
+		return (NULL);
+	++nwords;
 	p = (char **) malloc(nwords * sizeof(char *));
 	if (p == NULL)
 		return (NULL);
