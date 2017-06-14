@@ -26,6 +26,5 @@ int (*get_op_func(char *s))(int, int)
 		if (ops[i].op[0] == s[0])
 			return (ops[i].f);
 	}
-	puts("Error");
-	exit(99);
+	return (NULL);
 }
