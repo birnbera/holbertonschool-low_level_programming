@@ -1,4 +1,4 @@
-#include <stddef.h>
+#include <stdlib.h>
 
 /**
  * array_iterator - execute `action' on every element of `array'
@@ -10,6 +10,8 @@ void array_iterator(int *array, size_t size, void (*action)(int))
 {
 	size_t i;
 
+	if (action == NULL)
+		exit(EXIT_FAILURE);
 	for (i = 0; i < size; ++i)
 		action(array[i]);
 }
