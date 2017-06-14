@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 /**
  * int_index - compare elements of `array' using `cmp'
  * @array: array to compare
