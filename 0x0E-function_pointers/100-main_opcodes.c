@@ -18,9 +18,19 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 	nbytes = atoi(argv[1]);
+	if (nbytes < 0)
+	{
+		puts("Error");
+		exit(2);
+	}
+	if (nbytes == 0)
+	{
+		putchar('\n');
+		exit(EXIT_SUCCESS);
+	}
 	printf("%02x", *((unsigned char *) (main)));
 	for (i = 1; i < nbytes; ++i)
 		printf(" %02x", *((unsigned char *) (main + i)));
-	printf("\n");
+	putchar('\n');
 	exit(EXIT_SUCCESS);
 }
