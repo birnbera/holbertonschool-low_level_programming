@@ -1,6 +1,10 @@
 #include <stdarg.h>
 #include <stdio.h>
 
+/**
+ * print_all - print value of variables of char, int, float or char * types
+ * @format: format string
+ */
 void print_all(const char * const format, ...)
 {
 	va_list ap;

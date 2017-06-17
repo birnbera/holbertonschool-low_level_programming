@@ -24,7 +24,7 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	while (c > 0)
 	{
 		s = va_arg(ap, char *);
-                printf("%s%s", separator, (s ? s : "(nil)"));
+		printf("%s%s", separator, (s ? s : "(nil)"));
 		--c;
 	}
 	putchar('\n');
