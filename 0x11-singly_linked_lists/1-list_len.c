@@ -10,5 +10,5 @@ size_t list_len(const list_t *h)
 		ll = ll->next;
 		++size;
 	}
-        return (size);
+	return (size);
 }
