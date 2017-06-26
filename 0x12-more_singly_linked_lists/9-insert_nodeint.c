@@ -7,7 +7,7 @@
  * @idx: index where new node should be added
  * @n: value with which to initialize new node
  *
- * Return: pointer to new node, or NULL if fails; if `idx' - 1 is out of
+ * Return: pointer to new node, or NULL if fails. If `idx' - 1 is out of
  * range, return NULL.
  */
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
@@ -32,7 +32,7 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	}
 	for (i = 0; prev->next != NULL; ++i)
 	{
-	      	if (i == idx - 1)
+		if (i == idx - 1)
 		{
 			new->next = prev->next;
 			prev->next = new;
