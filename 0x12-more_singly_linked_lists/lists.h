@@ -30,4 +30,7 @@ size_t print_listint_safe(const listint_t *head);
 listint_t *find_listint_loop(listint_t *head);
 void print_buffer(const listint_t **, size_t);
 const listint_t **_realloc(const listint_t **, size_t, size_t);
+listint_t **_realloc2(listint_t **, size_t, size_t);
+size_t free_listint_safe(listint_t **h);
+void free_buffer(listint_t **, size_t);
 #endif /* _LISTS_H_ */
