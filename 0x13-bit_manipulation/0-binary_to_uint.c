@@ -2,8 +2,8 @@
  * binary_to_uint - convert string representation of binary number to uint
  * @b: string to convert
  *
- * Return: the converted number, or 0 if `b' is NULL or contains symbols besides
- * 0 or 1.
+ * Return: the converted number, or 0 if `b' is NULL or contains
+ * symbols besides 0 or 1.
  */
 unsigned int binary_to_uint(const char *b)
 {
