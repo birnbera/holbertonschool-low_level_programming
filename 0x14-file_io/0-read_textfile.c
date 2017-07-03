@@ -7,7 +7,7 @@
 /**
  * read_textfile - read a text file and print to STDOUT.
  * @filename: path of filename to read.
- * @letter: number of letters to read and write.
+ * @letters: number of letters to read and write.
  *
  * Return: 0 if `filename' is NULL orcannot be opened or read,
  * 0 if call to write fails or is less than the expected number
