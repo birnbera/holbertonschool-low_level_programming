@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 	char *file_from, *file_to;
 	char buf[READ_NBYTES];
 	ssize_t r;
-	int fdr, fdw;
+	int fdr, fdw, c = 0;
 
 	if (argc != 3)
 	{
@@ -42,17 +42,18 @@ int main(int argc, char *argv[])
 		exit(99);
 	}
 	while ((r = read(fdr, buf, READ_NBYTES)))
-		if (write(fdw, buf, r) != r)
-			break;
+		write(fdw, buf, r);
 	if (close(fdw))
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fdw);
-		exit(100);
+		c = 1;
 	}
 	if (close(fdr))
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fdr);
-		exit(100);
+		c = 1;
 	}
+	if (c)
+		exit(100);
 	exit(EXIT_SUCCESS);
 }
