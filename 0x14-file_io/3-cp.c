@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
 			file_from);
 		exit(98);
 	}
-	fdw = creat(file_to, 00664);
+	fdw = open(file_to, O_CREAT | O_TRUNC | O_WRONLY, 00664);
 	if (fdw == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
