@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-size_t f1(size_t);
 size_t f2(char *);
 size_t f3(char *);
 int f4(char *);
@@ -17,7 +16,7 @@ int main(int argc, char *argv[])
 	if (argc != 2)
 		exit (1);
 	uname = argv[1];
-	pw[0] = hash[f1(strlen(uname))];
+	pw[0] = hash[(strlen(uname) ^ 0x3b) & 0x3f];
 	pw[1] = hash[f2(uname)];
 	pw[2] = hash[f3(uname)];
 	pw[3] = hash[f4(uname)];
@@ -26,11 +25,6 @@ int main(int argc, char *argv[])
 	pw[6] = '\0';
 	printf("%s", pw);
 	return (0);
-}
-
-size_t f1(size_t len)
-{
-	return ((len ^ 0x3b) & 0x3f);
 }
 
 size_t f2(char *uname)
