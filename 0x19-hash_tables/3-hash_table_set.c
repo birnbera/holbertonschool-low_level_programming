@@ -20,12 +20,17 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	keydup = strdup(key);
 	if (keydup == NULL)
 		return (0);
-	valdup = strdup(value);
-	if (valdup == NULL)
+	if (value)
 	{
-		free(keydup);
-		return (0);
+		valdup = strdup(value);
+		if (valdup == NULL)
+		{
+			free(keydup);
+			return (0);
+		}
 	}
+	else
+		valdup = NULL;
 	index = key_index((const unsigned char *) key, ht->size);
 	for (bucket = ht->array[index]; bucket != NULL; bucket = bucket->next)
 		if (strcmp(keydup, bucket->key) == 0)
