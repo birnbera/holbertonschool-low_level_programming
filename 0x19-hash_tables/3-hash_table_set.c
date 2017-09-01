@@ -27,12 +27,12 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 	}
 	index = key_index((const unsigned char *) key, ht->size);
-	bucket = *(ht->array + index);
-	for (; bucket != NULL; bucket = bucket->next)
+	for (bucket = ht->array[index]; bucket != NULL; bucket = bucket->next)
 		if (strcmp(keydup, bucket->key) == 0)
 		{
 			free(bucket->key);
-			free(bucket->value);
+			if (bucket->value)
+				free(bucket->value);
 			bucket->key = keydup;
 			bucket->value = valdup;
 			return (1);
@@ -46,7 +46,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	}
 	node->key = keydup;
 	node->value = valdup;
-	node->next = *(ht->array + index);
-	*(ht->array + index) = node;
+	node->next = ht->array[index];
+	ht->array[index] = node;
 	return (1);
 }
