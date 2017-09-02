@@ -1,5 +1,11 @@
 #include "hash_tables.h"
 
+/**
+ * sorted_list_insert - function to insert new node into list
+ * alphanumerically by key.
+ * @ht: pointer to hash table
+ * @new: new node to be inserted
+ */
 void sorted_list_insert(shash_table_t *ht, shash_node_t *new)
 {
 	shash_node_t *shead = ht->shead;
@@ -10,8 +16,7 @@ void sorted_list_insert(shash_table_t *ht, shash_node_t *new)
 		new->snext = new->sprev = NULL;
 		return;
 	}
-	do
-	{
+	do {
 		if (strcmp(new->key, shead->key) < 0)
 		{
 			new->snext = shead;
@@ -31,6 +36,13 @@ void sorted_list_insert(shash_table_t *ht, shash_node_t *new)
 	ht->stail = new;
 }
 
+/**
+ * create_shash_node - function to create new sorted hash table node
+ * @key: key to use (mallocated by calling function).
+ * @value: value associated with key (also mallocated by calling function).
+ *
+ * Return: pointer to new node
+ */
 shash_node_t *create_shash_node(char *key, char *value)
 {
 	shash_node_t *new;
@@ -47,6 +59,13 @@ shash_node_t *create_shash_node(char *key, char *value)
 	return (new);
 }
 
+/**
+ * shash_table_create - function to allocate and initialize new sorted
+ * hash table.
+ * @size: size of array to allocate.
+ *
+ * Return: pointer to new hash table instance
+ */
 shash_table_t *shash_table_create(unsigned long int size)
 {
 	shash_table_t *ht;
@@ -66,6 +85,14 @@ shash_table_t *shash_table_create(unsigned long int size)
 	return (ht);
 }
 
+/**
+ * shash_table_set - function to set new table element
+ * @ht: pointer to hash table
+ * @key: key to use
+ * @value: value to associate with key
+ *
+ * Return: 1 on success, 0 otherwise
+ */
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
 	char *keydup, *valdup;
@@ -102,6 +129,13 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	return (1);
 }
 
+/**
+ * shash_table_get - function to get sorted hash table element by key
+ * @ht: pointer to sorted hash table
+ * @key: key to search
+ *
+ * Return: value associated with key
+ */
 char *shash_table_get(const shash_table_t *ht, const char *key)
 {
 	shash_node_t *bucket;
@@ -124,6 +158,11 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 	return (NULL);
 }
 
+/**
+ * shash_table_print - function to print sorted hash table in alphanumeric
+ * order.
+ * @ht: pointer to sorted hash table
+ */
 void shash_table_print(const shash_table_t *ht)
 {
 	shash_node_t *node;
@@ -144,6 +183,11 @@ void shash_table_print(const shash_table_t *ht)
 	printf("}\n");
 }
 
+/**
+ * shash_table_print_rev - function to print sorted hash table in
+ * reverse alphanumeric order.
+ * @ht: pointer to sorted hash table
+ */
 void shash_table_print_rev(const shash_table_t *ht)
 {
 	shash_node_t *node;
@@ -164,6 +208,10 @@ void shash_table_print_rev(const shash_table_t *ht)
 	printf("}\n");
 }
 
+/**
+ * shash_table_delete - function to free hash table
+ * @ht: pointer to sorted hash table
+ */
 void shash_table_delete(shash_table_t *ht)
 {
 	shash_node_t *head, *next;
