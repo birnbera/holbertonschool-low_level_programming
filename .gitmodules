@@ -1,3 +1,6 @@
 [submodule "0x18-stacks_queues_lifo_fifo"]
 	path = 0x18-stacks_queues_lifo_fifo
 	url = git@github.com:birnbera/monty.git
+[submodule "sorting_algorithms"]
+	path = sorting_algorithms
+	url = git@github.com:birnbera/sorting_algorithms.git
