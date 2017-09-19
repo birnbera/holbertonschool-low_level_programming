@@ -3,4 +3,4 @@
 	url = git@github.com:birnbera/monty.git
 [submodule "sorting_algorithms"]
 	path = 0x1A-sorting_algorithms
-	url = git@github.com:birnbera/sorting_algorithms.git
+	url = https://github.com/birnbera/sorting_algorithms.git
