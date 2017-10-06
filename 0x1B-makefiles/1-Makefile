@@ -1,5 +1,5 @@
-CC = gcc-4.8
-SRC = *.c
+CC = gcc
+SRC := $(wildcard *.c)
 
-all :
+all:
 	$(CC) $(SRC) -o holberton
