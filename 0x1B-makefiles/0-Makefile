@@ -1,11 +1,2 @@
-holberton : main.o holberton.o
-	gcc -o holberton holberton.o main.o
-
-main.o : main.c m.h
-	gcc -c main.c
-
-holberton.o : holberton.c m.h
-	gcc -c holberton.c
-
 all :
-	gcc -o holberton main.c holberton.c
+	gcc main.c holberton.c -o holberton
