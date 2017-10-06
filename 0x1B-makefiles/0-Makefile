@@ -1,0 +1,11 @@
+holberton : main.o holberton.o
+	gcc-4.8 -o holberton holberton.o main.o
+
+main.o : main.c m.h
+	gcc-4.8 -c main.c
+
+holberton.o : holberton.c m.h
+	gcc-4.8 -c holberton.c
+
+all :
+	make -f 0-Makefile
