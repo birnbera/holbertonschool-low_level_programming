@@ -61,7 +61,7 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 	binary_tree_t *node;
 
 	head = tail = NULL;
-	if (tree == NULL)
+	if (tree == NULL || func == NULL)
 		return;
 	push(&head, &tail, tree);
 	while (head)
