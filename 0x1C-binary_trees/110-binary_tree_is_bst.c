@@ -11,11 +11,10 @@
 int bst_compare_right(const binary_tree_t *tree, int start_val)
 {
 	if (tree == NULL)
-		return (0);
-	if (tree->right == NULL)
 		return (1);
 	if (tree->n > start_val)
-		return (bst_compare_right(tree->right, start_val));
+		return (bst_compare_right(tree->right, start_val)
+			&& bst_compare_right(tree->left, start_val));
 	return (0);
 }
 
@@ -30,11 +29,10 @@ int bst_compare_right(const binary_tree_t *tree, int start_val)
 int bst_compare_left(const binary_tree_t *tree, int start_val)
 {
 	if (tree == NULL)
-		return (0);
-	if (tree->left == NULL)
 		return (1);
 	if (tree->n < start_val)
-		return (bst_compare_left(tree->left, start_val));
+		return (bst_compare_left(tree->left, start_val)
+			&& bst_compare_left(tree->right, start_val));
 	return (0);
 }
 
@@ -48,8 +46,6 @@ int binary_tree_is_bst(const binary_tree_t *tree)
 {
 	if (tree == NULL)
 		return (0);
-	if (tree->left == NULL && tree->right == NULL)
-		return (1);
 	if (bst_compare_left(tree->left, tree->n)
 	    && bst_compare_right(tree->right, tree->n))
 		return ((tree->left == NULL
