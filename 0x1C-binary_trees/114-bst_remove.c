@@ -67,13 +67,17 @@ bst_t *bst_remove(bst_t *root, int value)
 		child = to_remove->right;
 		while (child->left != NULL)
 			child = child->left;
-		to_remove->right->parent = child;
-		to_remove->left->parent = child;
-		child->parent->left = child->right;
-		if (child->right != NULL)
-			child->right->parent = child->parent;
+		if (child != to_remove->right)
+		{
+			to_remove->right->parent = child;
+			child->parent->left = child->right;
+			if (child->right != NULL)
+				child->right->parent = child->parent;
+			child->right = to_remove->right;
+		}
+		if (to_remove->left != NULL)
+			to_remove->left->parent = child;
 		child->left = to_remove->left;
-		child->right = to_remove->right;
 		child->parent = to_remove->parent;
 		if (to_remove->parent == NULL)
 		{
