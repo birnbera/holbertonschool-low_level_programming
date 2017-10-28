@@ -70,34 +70,25 @@ bst_t *bst_search(const bst_t *tree, int value)
  */
 bst_t *simple_remove(bst_t *root, bst_t *to_remove, bst_t **parent)
 {
-	if (to_remove->parent == NULL)
+	if (to_remove->left != NULL)
+	{
+		to_remove->left->parent = to_remove->parent;
+		if (to_remove->parent == NULL)
+		{
+			root = to_remove->left;
+			free(to_remove);
+			return (root);
+		}
+		*parent = to_remove->left;
+		free(to_remove);
+		return (root);
+	}
+	else if (to_remove->parent == NULL)
 	{
 		free(to_remove);
 		return (NULL);
 	}
 	*parent = NULL;
-	free(to_remove);
-	return (root);
-}
-
-/**
- * left_remove - subroutine to remove node of BST for an only left child
- * @root: root of tree in which `to_remove` resides
- * @to_remove: node to remove
- * @parent: pointer to member of parent that points to `to_remove`
- *
- * Return: pointer to root in case root is replaced
- */
-bst_t *left_remove(bst_t *root, bst_t *to_remove, bst_t **parent)
-{
-	to_remove->left->parent = to_remove->parent;
-	if (to_remove->parent == NULL)
-	{
-		root = to_remove->left;
-		free(to_remove);
-		return (root);
-	}
-	*parent = to_remove->left;
 	free(to_remove);
 	return (root);
 }
@@ -119,12 +110,7 @@ bst_t *bst_remove(bst_t *root, int value)
 		parent = (to_remove == to_remove->parent->left ?
 			  &to_remove->parent->left : &to_remove->parent->right);
 	if (to_remove->right == NULL)
-	{
-		if (to_remove->left == NULL)
-			return (simple_remove(root, to_remove, parent));
-		else
-			return (left_remove(root, to_remove, parent));
-	}
+		return (simple_remove(root, to_remove, parent));
 	else
 	{
 		child = to_remove->right;
