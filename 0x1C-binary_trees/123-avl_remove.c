@@ -1,4 +1,5 @@
 #include "binary_trees.h"
+#include <stdio.h>
 
 #define ROTR binary_tree_rotate_right
 #define ROTL binary_tree_rotate_left
@@ -20,25 +21,9 @@ void avl_rebalance2(avl_t **tree)
 	avl_rebalance2(&(*tree)->right);
 	bf = BBAL((const binary_tree_t *)*tree);
 	if (bf > 1)
-	{
-		if (BBAL((const binary_tree_t *)(*tree)->left) > 0)
-			*tree = ROTR((binary_tree_t *)*tree);
-		else
-		{
-			(*tree)->left = ROTL((binary_tree_t *)(*tree)->left);
-			*tree = ROTR((binary_tree_t *)*tree);
-		}
-	}
+		*tree = ROTR((binary_tree_t *)*tree);
 	else if (bf < -1)
-	{
-		if (BBAL((const binary_tree_t *)(*tree)->right) < 0)
-			*tree = ROTL((binary_tree_t *)*tree);
-		else
-		{
-			(*tree)->right = ROTR((binary_tree_t *)(*tree)->right);
-			*tree = ROTL((binary_tree_t *)*tree);
-		}
-	}
+		*tree = ROTL((binary_tree_t *)*tree);
 }
 
 /**
@@ -111,32 +96,29 @@ bst_t *bst_remove(bst_t *root, int value)
 			  &to_remove->parent->left : &to_remove->parent->right);
 	if (to_remove->right == NULL)
 		return (simple_remove(root, to_remove, parent));
-	else
+	child = to_remove->right;
+	while (child->left != NULL)
+		child = child->left;
+	if (child != to_remove->right)
 	{
-		child = to_remove->right;
-		while (child->left != NULL)
-			child = child->left;
-		if (child != to_remove->right)
-		{
-			to_remove->right->parent = child;
-			child->parent->left = child->right;
-			if (child->right != NULL)
-				child->right->parent = child->parent;
-			child->right = to_remove->right;
-		}
-		if (to_remove->left != NULL)
-			to_remove->left->parent = child;
-		child->left = to_remove->left;
-		child->parent = to_remove->parent;
-		if (to_remove->parent == NULL)
-		{
-			free(to_remove);
-			return (child);
-		}
-		*parent = child;
-		free(to_remove);
-		return (root);
+		to_remove->right->parent = child;
+		child->parent->left = child->right;
+		if (child->right != NULL)
+			child->right->parent = child->parent;
+		child->right = to_remove->right;
 	}
+	if (to_remove->left != NULL)
+		to_remove->left->parent = child;
+	child->left = to_remove->left;
+	child->parent = to_remove->parent;
+	if (to_remove->parent == NULL)
+	{
+		free(to_remove);
+		return (child);
+	}
+	*parent = child;
+	free(to_remove);
+	return (root);
 }
 
 /**
