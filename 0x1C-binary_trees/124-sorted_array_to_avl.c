@@ -16,6 +16,8 @@ avl_t *_sorted_array_to_avl(avl_t *parent, int *array, size_t size)
 	if (array == NULL || size == 0)
 		return (NULL);
 	root = (avl_t *) binary_tree_node(parent, array[(size - 1) / 2]);
+	if (root == NULL)
+		return (NULL);
 	root->left = _sorted_array_to_avl(root, array, (size - 1) / 2);
 	root->right = _sorted_array_to_avl(root,
 					   array + (size + 1) / 2,
