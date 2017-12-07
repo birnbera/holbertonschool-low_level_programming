@@ -33,7 +33,9 @@ int binary_search(int *array, size_t size, int value)
 	if (value == array[mid])
 		return (mid);
 	if (value < array[mid])
-		return (binary_search(array, mid, value));
+		return (binary_search(array, mid + 1, value));
 	r = binary_search(array + mid + 1, size - mid - 1, value);
-	return (r == -1 ? -1 : (int) (mid + 1 + r));
+	if (r == -1)
+		return (-1);
+	return (mid + 1 + r);
 }
