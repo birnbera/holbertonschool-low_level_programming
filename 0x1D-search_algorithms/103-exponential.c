@@ -16,7 +16,7 @@ void print_subarray(int *array, size_t size)
 }
 
 /**
- * advanced_binary - binary search for element in array
+ * binary_search - binary search for element in array
  * @array: array to search
  * @size: size of array
  * @value: value to search for
@@ -24,7 +24,7 @@ void print_subarray(int *array, size_t size)
  * Return: index of element equal to `value`, or -1 if absent or array is
  * NULL or empty.
  */
-int advanced_binary(int *array, size_t size, int value)
+int binary_search(int *array, size_t size, int value)
 {
 	int r;
 	size_t mid = (size - 1) / 2;
@@ -32,12 +32,14 @@ int advanced_binary(int *array, size_t size, int value)
 	if (array == NULL || size == 0)
 		return (-1);
 	print_subarray(array, size);
-	if (value == array[0])
-		return (0);
-	if (value <= array[mid])
-		return (advanced_binary(array, mid + 1, value));
-	r = advanced_binary(array + mid + 1, size - mid - 1, value);
-	return (r == -1 ? -1 : (int) (mid + 1 + r));
+	if (value == array[mid])
+		return (mid);
+	if (value < array[mid])
+		return (binary_search(array, mid + 1, value));
+	r = binary_search(array + mid + 1, size - mid - 1, value);
+	if (r == -1)
+		return (-1);
+	return (mid + 1 + r);
 }
 
 /**
@@ -69,7 +71,7 @@ int exponential_search(int *array, size_t size, int value)
 	i /= 2;
 	printf("Value found between indexes [%lu] and [%lu]\n",
 	       i, min(size - 1, i * 2));
-	b = advanced_binary(array + i, min(i + 1, size - i), value);
+	b = binary_search(array + i, min(i + 1, size - i), value);
 	if (b == -1)
 		return (-1);
 	return (b + i);
