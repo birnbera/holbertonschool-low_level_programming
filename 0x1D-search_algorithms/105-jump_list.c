@@ -12,36 +12,37 @@
  */
 listint_t *jump_list(listint_t *list, size_t size, int value)
 {
-	size_t i, times, blk_size;
+	size_t i, blk_size;
 	listint_t *last;
 
 	if (list == NULL || size == 0)
 		return (NULL);
 	blk_size = sqrt(size);
 	last = list;
-	times = 0;
-	while (1)
+	for (last = list, i = 0; i < size; i++, list = list->next)
 	{
-		for (i = 0; i < blk_size && list->next != NULL; i++)
-			list = list->next;
-		printf("Value checked at index [%lu] = [%d]\n",
-		       blk_size * (times + 1) - (blk_size - i), list->n);
-		if (value <= list->n || list->next == NULL)
+		if (i != 0 && i % blk_size == 0)
+		{
+			printf("Value checked at index [%lu] = [%d]\n",
+			       list->index, list->n);
+			if (value <= list->n)
+				break;
+			last = list;
+		}
+		if (list->next == NULL)
 			break;
-		last = list;
-		times++;
 	}
 	printf("Value found between indexes [%lu] and [%lu]\n",
-	       blk_size * times,
-	       blk_size * (times + 1) - (blk_size - i));
-	for (i = 0; i < blk_size; i++)
+	       last->index,
+	       list->index);
+	while (last->n <= value)
 	{
-		if (last == NULL)
-			return (NULL);
 		printf("Value checked at index [%lu] = [%d]\n",
-		       times * blk_size + i, last->n);
+		       last->index, last->n);
 		if (last->n == value)
 			return (last);
+		if (last == list)
+			break;
 		last = last->next;
 	}
 	return (NULL);
