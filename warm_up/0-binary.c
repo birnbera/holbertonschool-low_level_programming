@@ -12,20 +12,20 @@ int binary_search(int *array, size_t size, int value)
 {
 	int mid, loc;
 
-	mid = size / 2;
+	mid = (size - 1) / 2;
 	if (!array || !size)
 		return (-1);
 	print_array(array, size);
 	if (array[mid] == value)
 		return (mid);
 	if (value < array[mid])
-		return (binary_search(array, mid, value));
-	loc = binary_search(array + mid + size % 2,
-			    size - mid - size % 2,
+		return (binary_search(array, mid + 1, value));
+	loc = binary_search(array + mid + 1,
+			    size - mid - 1,
 			    value);
 	if (loc == -1)
 		return (-1);
-	return (loc + mid + size % 2);
+	return (loc + mid + 1);
 }
 
 /**
