@@ -25,7 +25,7 @@ int binary_search(int *array, size_t size, int value)
 			    value);
 	if (loc == -1)
 		return (-1);
-	return loc + mid + size % 2;
+	return (loc + mid + size % 2);
 }
 
 /**
